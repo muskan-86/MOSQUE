@@ -19,6 +19,7 @@
             background: #009a53;
             /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
         }
+
         .fc .fc-toolbar button {
             background-color: #009a53;
             color: white;
@@ -28,6 +29,7 @@
         .fc .fc-toolbar button:hover {
             background-color: #009a53;
         }
+
         .fc .fc-dayGridMonth-button,
         .fc .fc-today-button,
         .fc .fc-timeGridWeek-button,
@@ -41,11 +43,10 @@
         .fc .fc-timeGridDay-button:hover {
             background-color: #039955 !important;
         }
-
     </style>
 </head>
 
-<body class="font-noto-sans">
+<body class="overflow-x-hidden">
     <div class="flex flex-col justify-center items-center font-noto-sans text-black">
         <!-- Navbar -->
         <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
@@ -101,63 +102,69 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-center items-center max-w-full my-12">
-        <h2 class="font-bold text-3xl mb-6">Events Calendar</h2>
+    <div class="flex justify-center items-center max-w-full my-12 font-serif">
+        <h2 class="font-bold text-3xl mb-6 Noto Serif ">Events Calendar</h2>
     </div>
-    <div id='calendar'></div>
+    <div id='calendar' class="mx-10 "></div>
     <!--footer-->
     <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
         <div class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200">
-          <div class="flex flex-col items-start">
-            <img class="h-24 my-4" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
-  
-            <div class="my-4 flex flex-col gap-2">
-              <!-- <p class="font-semibold">Contact Us</p> -->
-              <p>Bilal Masjid 4115 SW 160th Beaverton OR 97007</p>
-              <p>Email: bilalmasjid@bilalmasjid.com</p>
-            </div>
-          </div>
-          <div class="flex flex-row gap-12 items-start">
-            <div class="flex flex-col gap-4 font-medium">
-              <p class="font-semibold">Quick Links</p>
-              <p>About Us</p>
-              <p>Services</p>
-              <p>Community</p>
-            </div>
-            <div class="flex flex-col justify-center mx-4 items-center">
-              <button
-                class="flex justify-center items-center min-w-28 my-4 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl">
-                Follow Us
-              </button>
-              <div class="flex gap-3">
-                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
-                  <img src="./public/Facebook-icon.png"
-                    alt="facebook icon">
+            <div class="flex flex-col items-start">
+                <img class="h-24 my-4" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
+
+                <div class="my-4 flex flex-col gap-2">
+                    <!-- <p class="font-semibold">Contact Us</p> -->
+                    <p>Bilal Masjid 4115 SW 160th Beaverton OR 97007</p>
+                    <p>Email: bilalmasjid@bilalmasjid.com</p>
                 </div>
-                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
-                  <img src="./public/whatsapp-icon.svg">
-                </div>
-                <!-- <div class="bg-mediumseagreen-300 rounded-full w-8 h-8 flex justify-center items-center">
-                  <img src="./public/email-icon.webp" > -->
-                </div>
-              </div>
             </div>
-          </div>
+            <div class="flex flex-row gap-12 items-start">
+                <div class="flex flex-col gap-4 font-medium">
+                    <p class="font-semibold">Quick Links</p>
+                    <p>About Us</p>
+                    <p>Services</p>
+                    <p>Community</p>
+                </div>
+                <div class="flex flex-col justify-center mx-4 items-center">
+                    <button
+                        class="flex justify-center items-center min-w-28 my-4 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl">
+                        Follow Us
+                    </button>
+                    <div class="flex gap-3">
+                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                            <a href="https://web.facebook.com/bilalmasjidbeaverton?_rdc=1&_rdr" target="_blank">
+                                <img src="./public/Facebook-icon.png" alt="facebook icon">
+                            </a>
+                        </div>
+                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                            <a href="https://chat.whatsapp.com/B8c6ngDZTkBI8RBs6JHEgm" target="_blank">
+                                <img src="./public/whatsapp-icon.svg">
+                            </a>
+                        </div>
+                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                            <a href="https://www.youtube.com/channel/UCYcsOfNe70UH_b65RdZmpRA " target="_blank">
+                                <img src="./public/youtube-icon.png" class="p-1">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-          const menuBtn = document.getElementById("menu-btn");
-          const mobileMenu = document.getElementById("mobile-menu");
-  
-          // Hide the mobile menu by default on page load
-          mobileMenu.classList.add("hidden");
-  
-          menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-          });
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            // Hide the mobile menu by default on page load
+            mobileMenu.classList.add("hidden");
+
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
         });
-      </script>
+    </script>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -167,13 +174,13 @@
             });
             calendar.render();
         });
-    
+
     </script>
     <script>
-    
+
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
-    
+
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 initialDate: '2024-07-07',
@@ -184,58 +191,147 @@
                 },
                 events: [
                     {
-                        title: 'Learn Quran With Tajweed',
-                        start: '2024-07-03',
+                        groupid: '999',
+                        title: 'Ladies support group halaqa',
+                        start: '2024-07-29T18:00:00',
+                        end: '2024-07-29T20:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+
+                        title: 'Sisters Tajweed Halaqah(English)',
+                        start: '2024-08-03T09:00:00',
+                        end: '2024-08-03T10:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Illustrated Tajweed (English)',
+                        start: '2024-08-03T10:30:00',
+                        end: '2024-08-03T12:15:00',
                         color: '#009a53'
                     },
                     {
-                        groupId: '999',
-                        title: 'Jumma Khutba',
-                        start: '2024-07-05T12:30:00',
+                        groupid: '999',
+                        title: 'Ladies support group halaqa',
+                        start: '2024-08-05T18:00:00',
+                        end: '2024-08-05T20:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Ladies Quran Halaqa (Arabic speakers)',
+                        start: '2024-08-09T19:30:00',
+                        end: '2024-08-09T21:30:00',
                         color: '#009a53'
                     },
                     {
-                        title: 'Surah Noor Tafseer',
-                        start: '2024-07-07T19:00:00',
-                        end: '2024-07-11T20:00:00',
+                        title: 'Sisters Tajweed Halaqah(English)',
+                        start: '2024-08-10T09:00:00',
+                        end: '2024-08-10T10:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Illustrated Tajweed (English)',
+                        start: '2024-08-10T10:30:00',
+                        end: '2024-08-10T12:15:00',
                         color: '#009a53'
                     },
                     {
-                        groupId: '999',
-                        title: 'Jumma Khutba',
-                        start: '2024-07-12T12:30:00',
+                        title: 'Community Pot Lucks',
+                        start: '2024-08-10T18:00:00',
+                        end: '2024-08-10T20:00:00',
                         color: '#009a53'
                     },
                     {
-                        groupId: '999',
-                        title: 'Jumma Khutba',
-                        start: '2024-07-19T12:30:00',
+                        groupid: '999',
+                        title: 'Ladies support group halaqa',
+                        start: '2024-08-12T18:00:00',
+                        end: '2024-08-12T20:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Sisters Tajweed Halaqah(English)',
+                        start: '2024-08-17T09:00:00',
+                        end: '2024-08-17T10:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Illustrated Tajweed (English)',
+                        start: '2024-08-17T10:30:00',
+                        end: '2024-08-17T12:15:00',
                         color: '#009a53'
                     },
                     {
-                        groupId: '999',
-                        title: 'Jumma Khutba',
-                        start: '2024-07-26T12:30:00',
-                        color: '#009a53'
-                    },
-    
-                    {
-                        title: 'Disscusion Navigating Relationships',
-                        start: '2024-07-16T19:30:00',
-                        end: '2024-07-18',
-                        color: '#009a53'
+                        groupid: '999',
+                        title: 'Ladies support group halaqa',
+                        start: '2024-08-19T18:00:00',
+                        end: '2024-08-19T20:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
                     },
                     {
-                        title: 'Seerah of the Prophet',
-                        start: '2024-07-22',
+                        title: 'Ladies Quran Halaqa (Arabic speakers)',
+                        start: '2024-08-23T19:30:00',
+                        end: '2024-08-23T21:30:00',
                         color: '#009a53'
                     },
-    
+                    {
+                        title: 'Sisters Tajweed Halaqah(English)',
+                        start: '2024-08-24T09:00:00',
+                        end: '2024-08-24T10:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Illustrated Tajweed (English)',
+                        start: '2024-08-24T10:30:00',
+                        end: '2024-08-24T12:15:00',
+                        color: '#009a53'
+                    },
+                    {
+                        title: 'Community Pot Lucks',
+                        start: '2024-08-24T18:00:00',
+                        end: '2024-08-24T20:00:00',
+                        color: '#009a53'
+                    },
+                    {
+                        groupid: '999',
+                        title: 'Ladies support group halaqa',
+                        start: '2024-08-26T18:00:00',
+                        end: '2024-08-26T20:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Imam Toures Quran Tafseer class',
+                        start: '2024-08-30T18:15:00',
+                        end: '2024-08-30T19:30:00',
+                        color: '#009a53'
+                    },
+                    {
+                        title: 'Sisters Tajweed Halaqah(English)',
+                        start: '2024-08-31T09:00:00',
+                        end: '2024-08-31T10:30:00',
+                        color: '#009a53',
+                        fontSize: '12px'
+                    },
+                    {
+                        title: 'Illustrated Tajweed (English)',
+                        start: '2024-08-31T10:30:00',
+                        end: '2024-08-31T12:15:00',
+                        color: '#009a53'
+                    },
                 ]
             });
             calendar.render();
         });
-    
+
     </script>
 </body>
-</html>        
+
+</html>
