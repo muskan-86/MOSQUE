@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="./output.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@400;600;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khitan+Small+Script&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="script.js"></script>
 
@@ -181,8 +182,16 @@
         width: 100%;
       }
     }
+    .noto-serif-khitan-small-script-regular {
+      font-family: "Noto Serif Khitan Small Script", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    
   </style>
 </head>
+
+<!-- Main Content -->
 
 <body class="overflow-x-hidden">
   <!-- Loader -->
@@ -190,11 +199,11 @@
     <div class="loader"></div>
   </div>
   <!-- Main Content -->
-  <div id="main-content" class="hidden ">
+  <div id="main-content" class="hidden">
     <div class="flex flex-col justify-center items-center font-noto-sans text-black">
       <div>
         <!-- Navbar -->
-        <div class="flex justify-between items-center w-full px-4 py-3 bg-white" data-aos="fade-down">
+        <div class="flex justify-between items-center w-full px-4 py-3 bg-white relative" data-aos="fade-down">
           <!-- Logo -->
           <div>
             <img class="ml-4 h-16" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
@@ -208,14 +217,14 @@
           </div>
 
           <!-- Navigation -->
-          <nav id="menu" class="hidden md:flex gap-10 items-center">
+          <nav id="menu" class="hidden md:flex gap-10 items-center relative">
             <a href="about.html" class="no-underline text-black hover:text-gray-700">About Us</a>
             <a href="#" class="no-underline text-black hover:text-gray-700">Services</a>
             <a href="events.html" class="no-underline text-black hover:text-gray-700">Events</a>
             <div class="relative group">
               <a href="#" class="no-underline text-black hover:text-gray-700">Donations</a>
               <div
-                class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Online</a>
                 <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Stock</a>
               </div>
@@ -224,12 +233,12 @@
 
           <!-- Janaza and Mosque Location -->
           <div class="hidden md:flex items-center space-x-4 w-36 relative">
-            <div class="dropdown">
+            <div class="dropdown relative">
               <button
                 class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300">
                 Location
               </button>
-              <div class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2">
+              <div class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2 z-30">
                 <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Janaza</a>
                 <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Mosque</a>
               </div>
@@ -239,7 +248,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-          class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4">
+          class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4 relative z-30">
           <a href="about.html" class="no-underline text-black hover:text-gray-700 py-2">About Us</a>
           <a href="#" class="no-underline text-black hover:text-gray-700 py-2">Services</a>
           <a href="events.html" class="no-underline text-black hover:text-gray-700 py-2">Events</a>
@@ -247,7 +256,7 @@
             <button id="donations-button"
               class="no-underline text-black hover:text-gray-700 py-2 block w-full text-left">Donations</button>
             <div id="donations-dropdown"
-              class="hidden flex-col items-start bg-white border border-gray-200 rounded-md shadow-lg w-full mt-1">
+              class="hidden flex-col items-start bg-white border border-gray-200 rounded-md shadow-lg w-full mt-1 z-30">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Online</a>
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Stock</a>
             </div>
@@ -263,10 +272,11 @@
         </div>
 
         <!-- Hero Section -->
-        <div class="relative w-full bg-[url('./public/background.png')] bg-cover bg-center">
-          <div class="absolute inset-0   bg-white opacity-70"></div>
+        <div class="relative w-full bg-cover bg-center z-10"
+          style="background-color:#009a53 ; background-image: url('./public/background.png');">
+          <div class="absolute inset-0 bg-white opacity-70 z-10"></div>
           <div
-            class="relative z-10 flex flex-col items-center my-7 md:flex-row max-w-full justify-center md:justify-between gap-10 !mx-10 ">
+            class="relative z-20 flex flex-col items-center my-7 md:flex-row max-w-full justify-center md:justify-between gap-10 !mx-10 ">
             <div class="flex flex-col md:w-[33%] gap-4 justify-center items-center max-w-full p-2">
               <div class="my-4">
                 <h2 class="font-black text-2xl md:text-3xl md:text-left text-center" data-aos="fade-down">
@@ -382,16 +392,77 @@
       </div>
 
       <!-- hero section ends -->
+       
+      <!-- Prayer Times -->
 
       <div class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16" data-aos="slide-left">
         <div class="">
-          <div class="flex flex-col md:flex-row items-center justify-center gap-2 my-3">
-            <p id="gregorian-date" class="text-white text-center text-2xl font-bold m-1"></p>
-            <p id="islamic-date" class="text-white text-center text-2xl font-bold m-1"></p>
+          <!-- <div class="flex flex-col md:flex-row items-center justify-center gap-2 my-3">
+            <p class="text-white text-center text-2xl font-bold m-1">
+              Monday 15th July, 2024
+            </p>
+            <p class="text-white text-center text-2xl font-bold m-1">
+              (7th Muharram 1446 AH)
+            </p>
           </div>
-          <div id="prayer-times"
-            class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16">
+          Prayer Times -->
+          <div class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16">
+            <div class="flex flex-col items-center gap-4 justify-between border-white border-2 p-4 rounded-3xl">
+              <img class="object-contain" src="./public/sunrise@2x.png" alt="Sun Icon"
+                style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                5:00 AM
+              </button>
+              <p class="text-white m-0 text-xl">Fajr</p>
+            </div>
+            <div class="flex flex-col items-center gap-4 justify-between">
+              <img class="object-contain" src="./public/sunrise-1@2x.png" alt="Sun Icon"
+                style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                6:08 AM
+              </button>
+              <p class="text-white m-0 text-xl">Sunrise</p>
+            </div>
+            <div class="flex flex-col items-center gap-4 justify-between">
+              <img class="object-contain" src="./public/sun@2x.png" alt="Sun Icon" style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                12:20 PM
+              </button>
+              <p class="text-white m-0 text-xl">Dhuhr</p>
+            </div>
+            <div class="flex flex-col items-center gap-4 justify-between">
+              <img class="object-contain" src="./public/sun-1@2x.png" alt="Sun Icon"
+                style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                3:50 PM
+              </button>
+              <p class="text-white m-0 text-xl">Asr</p>
+            </div>
+            <div class="flex flex-col items-center gap-4 justify-between">
+              <img class="object-contain" src="./public/sunset@2x.png" alt="Sun Icon"
+                style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                6:50 PM
+              </button>
+              <p class="text-white m-0 text-xl">Maghrib</p>
+            </div>
+            <div class="flex flex-col items-center gap-4 justify-between">
+              <img class="object-contain" src="./public/moon-and-stars@2x.png" alt="Sun Icon"
+                style="width: 40px; height: 40px" />
+              <button
+                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl">
+                8:50 PM
+              </button>
+              <p class="text-white m-0 text-xl">Isha</p>
+            </div>
           </div>
+
+          <!-- Button -->
           <div class="flex flex-row items-center gap-6 justify-center">
             <button
               class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md">
@@ -406,142 +477,10 @@
         </div>
       </div>
 
-      <!-- Prayer Times 
-
-      <div
-        class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
-        data-aos="slide-left"
-      >
-        <div class="">
-          <div
-            class="flex flex-col md:flex-row items-center justify-center gap-2 my-3"
-          >
-            <p class="text-white text-center text-2xl font-bold m-1">
-              Monday 15th July, 2024
-            </p>
-            <p class="text-white text-center text-2xl font-bold m-1">
-              (7th Muharram 1446 AH)
-            </p>
-          </div>
-           Prayer Times
-          <div
-            class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16"
-          >
-            <div
-              class="flex flex-col items-center gap-4 justify-between border-white border-2 p-4 rounded-3xl"
-            >
-              <img
-                class="object-contain"
-                src="./public/sunrise@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                5:00 AM
-              </button>
-              <p class="text-white m-0 text-xl">Fajr</p>
-            </div>
-            <div class="flex flex-col items-center gap-4 justify-between">
-              <img
-                class="object-contain"
-                src="./public/sunrise-1@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                6:08 AM
-              </button>
-              <p class="text-white m-0 text-xl">Sunrise</p>
-            </div>
-            <div class="flex flex-col items-center gap-4 justify-between">
-              <img
-                class="object-contain"
-                src="./public/sun@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                12:20 PM
-              </button>
-              <p class="text-white m-0 text-xl">Dhuhr</p>
-            </div>
-            <div class="flex flex-col items-center gap-4 justify-between">
-              <img
-                class="object-contain"
-                src="./public/sun-1@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                3:50 PM
-              </button>
-              <p class="text-white m-0 text-xl">Asr</p>
-            </div>
-            <div class="flex flex-col items-center gap-4 justify-between">
-              <img
-                class="object-contain"
-                src="./public/sunset@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                6:50 PM
-              </button>
-              <p class="text-white m-0 text-xl">Maghrib</p>
-            </div>
-            <div class="flex flex-col items-center gap-4 justify-between">
-              <img
-                class="object-contain"
-                src="./public/moon-and-stars@2x.png"
-                alt="Sun Icon"
-                style="width: 40px; height: 40px"
-              />
-              <button
-                class="flex items-center border-none bg-white text-mediumseagreen-300 font-extrabold py-2 m-o px-4 rounded-2xl"
-              >
-                8:50 PM
-              </button>
-              <p class="text-white m-0 text-xl">Isha</p>
-            </div>
-          </div> -->
-
-      <!-- Button -->
-      <!-- <div class="flex flex-row items-center gap-6 justify-center">
-            <button
-              class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md"
-            >
-              <p>Schedule</p>
-              <img
-                src="./public/back-arrow-5@2x.png"
-                class="h-[23px] w-[23px]"
-              />
-            </button>
-            <div class="flex justify-around items-center gap-4">
-              <div
-                class="rounded-[50%] bg-gainsboro-100 w-[17px] h-[17px] z-[1]"
-              ></div>
-              <div
-                class="rounded-[50%] bg-gray-400 w-[17px] h-[17px] z-[1]"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
       <!-- Upcoming Events -->
       <div class="flex flex-col justify-center items-center max-w-full gap-10 my-5">
         <div data-aos="fade-down">
-          <h2 class="font-bold text-3xl mb-6">Upcoming Events</h2>
+          <h2 class="noto-serif-khitan-small-script-regular font-bold text-3xl mb-6 ">UPCOMING EVENTS</h2>
         </div>
         <div class="container p-0">
           <input type="radio" name="dot" id="one" checked />
@@ -555,7 +494,7 @@
                   <img class=" h-full w-full" src="./public/Why-Islam-is-true-1536x1536.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
                       Register
                     </p>
                   </div>
@@ -566,7 +505,7 @@
                   <img class="h-full w-full" src="./public/Discussion-Navigating-Relationships.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
                       Register
                     </p>
                   </div>
@@ -577,8 +516,8 @@
                   <img class="h-full w-full" src="./public/traditional-iftar-fast-breaking.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
-                      Iftar
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      Register
                     </p>
                   </div>
                 </div>
@@ -591,8 +530,8 @@
                   <img class="h-full w-full" src="./public/khutba.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
-                      Jumma Khutba
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      Register
                     </p>
                   </div>
                 </div>
@@ -602,8 +541,8 @@
                   <img class="h-full w-full" src="./public/donations.jpg " />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
-                      Donate
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      Register
                     </p>
                   </div>
                 </div>
@@ -612,9 +551,9 @@
                 <div class="relative w-100 h-100">
                   <img class="h-full w-full" src="./public/community.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
-                    <p class="w-[70%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-                      qwo[]>
-                      Join the Community
+                    <p
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      Register
                     </p>
                   </div>
                 </div>
@@ -627,7 +566,7 @@
                   <img class="h-full w-full object-cover" src="./public/Islamic-Studies-Course-Quran-Oasis.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-1 rounded-2xl">
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
                       Register
                     </p>
                   </div>
@@ -638,7 +577,7 @@
                   <img class="h-full w-full object-cover" src="./public/quran.jpg" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
                       Register
                     </p>
                   </div>
@@ -649,8 +588,8 @@
                   <img class="h-full w-full object-cover" src="./public/khutba.jpg" alt="Jumma Khutba" />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
-                      Jumma Khutba
+                      class="w-[40%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl">
+                      Register
                     </p>
                   </div>
                 </div>
@@ -669,7 +608,7 @@
 
       <div class="flex flex-col justify-around items-center gap-5 my-5">
         <div>
-          <h2 class="font-bold text-3xl" data-aos="fade-in">Our Services</h2>
+          <h2 class="noto-serif-khitan-small-script-regular font-bold text-3xl" data-aos="fade-in">OUR SERVICES</h2>
         </div>
 
         <!-- Service 1 -->
@@ -745,7 +684,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
         <div class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200">
@@ -845,10 +784,6 @@
     setInterval(updateSlides, 5000);
     updateSlides();
   </script>
-
-
-
-
 </body>
 
 </html>
