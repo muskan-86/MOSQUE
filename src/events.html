@@ -225,17 +225,6 @@
             });
         });
     </script>
-    <!-- <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth'
-            });
-            calendar.render();
-        });
-
-    </script> -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         window.addEventListener('load', function () {
@@ -245,15 +234,13 @@
             setTimeout(function () {
               loader.style.display = 'none';
               mainContent.classList.remove('hidden');
-          
-              // Initialize AOS
+        
               AOS.init({
                 duration: 3000,
                 once: true,
                 offset: 90,
               });
           
-              // Initialize FullCalendar
               var calendarEl = document.getElementById('calendar');
               var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
@@ -408,181 +395,6 @@
           });
           
     </script>
-    
-    <!-- <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                initialDate: '2024-07-07',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                events: [
-                    {
-                        
-                        title: 'Ladies support group halaqa',
-                        start: '2024-07-29',
-                        end: '2024-07-29',
-                        color: '#009a53',
-                        
-                    },
-                    {
-
-                        title: 'Sisters Tajweed Halaqah(English)',
-                        start: '2024-08-03',
-                        end: '2024-08-03',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Illustrated Tajweed (English)',
-                        start: '2024-08-03',
-                        end: '2024-08-03',
-                        color: '#009a53'
-                    },
-                    {
-                        
-                        title: 'Ladies support group halaqa',
-                        start: '2024-08-05',
-                        end: '2024-08-05',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Ladies Quran Halaqa (Arabic speakers)',
-                        start: '2024-08-09',
-                        end: '2024-08-09',
-                        color: '#009a53'
-                    },
-                    {
-                        title: 'Sisters Tajweed Halaqah(English)',
-                        start: '2024-08-10',
-                        end: '2024-08-10',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Illustrated Tajweed (English)',
-                        start: '2024-08-10',
-                        end: '2024-08-10',
-                        color: '#009a53'
-                    },
-                    {
-                        title: 'Community Pot Lucks',
-                        start: '2024-08-10',
-                        end: '2024-08-10',
-                        color: '#009a53'
-                    },
-                    {
-                        
-                        title: 'Ladies support group halaqa',
-                        start: '2024-08-12',
-                        end: '2024-08-12T',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Sisters Tajweed Halaqah(English)',
-                        start: '2024-08-17',
-                        end: '2024-08-17',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Illustrated Tajweed (English)',
-                        start: '2024-08-17',
-                        end: '2024-08-17',
-                        color: '#009a53'
-                    },
-                    {
-                        groupid: '999',
-                        title: 'Ladies support group halaqa',
-                        start: '2024-08-19',
-                        end: '2024-08-19',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Ladies Quran Halaqa (Arabic speakers)',
-                        start: '2024-08-23',
-                        end: '2024-08-23',
-                        color: '#009a53'
-                    },
-                    {
-                        title: 'Sisters Tajweed Halaqah(English)',
-                        start: '2024-08-24',
-                        end: '2024-08-24',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Illustrated Tajweed (English)',
-                        start: '2024-08-24',
-                        end: '2024-08-24',
-                        color: '#009a53'
-                    },
-                    {
-                        title: 'Community Pot Lucks',
-                        start: '2024-08-24',
-                        end: '2024-08-24',
-                        color: '#009a53'
-                    },
-                    {
-                        
-                        title: 'Ladies support group halaqa',
-                        start: '2024-08-26',
-                        end: '2024-08-26',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Imam Toures Quran Tafseer class',
-                        start: '2024-08-30',
-                        end: '2024-08-30',
-                        color: '#009a53'
-                    },
-                    {
-                        title: 'Sisters Tajweed Halaqah(English)',
-                        start: '2024-08-31',
-                        end: '2024-08-31T',
-                        color: '#009a53',
-                        fontSize: '12px'
-                    },
-                    {
-                        title: 'Illustrated Tajweed (English)',
-                        start: '2024-08-31',
-                        end: '2024-08-31',
-                        color: '#009a53'
-                    },
-                ]
-                
-            });
-            calendar.render();
-        });
-    </script>
-    <script>
-        window.addEventListener('load', function () {
-          var loader = document.getElementById('loader');
-          var mainContent = document.getElementById('main-content');
-    
-          setTimeout(function () {
-            loader.style.display = 'none';
-            mainContent.classList.remove('hidden');
-    
-            // Reinitialize AOS
-            AOS.init({
-              duration: 3000,
-              once: true,
-              offset: 90,
-            });
-          }, 3000); // 3 seconds delay
-        });
-      </script> -->
 </body>
 
 </html>
