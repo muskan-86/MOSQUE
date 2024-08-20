@@ -11,6 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         .dropdown:hover .dropdown-menu {
             display: block;
@@ -20,6 +22,7 @@
             background: #009a53;
             /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
         }
+
         .loader {
             width: 50px;
             aspect-ratio: 1;
@@ -27,32 +30,32 @@
             display: grid;
             -webkit-mask: conic-gradient(from 15deg, #0000, #000);
             animation: spin 1s infinite steps(12);
-          }
-      
-          .loader,
-          .loader::before,
-          .loader::after {
+        }
+
+        .loader,
+        .loader::before,
+        .loader::after {
             background:
-              radial-gradient(closest-side at 50% 12.5%, #009a53 96%, transparent) 50% 0/20% 80% repeat-y,
-              radial-gradient(closest-side at 12.5% 50%, #009a53 96%, transparent) 0 50%/80% 20% repeat-x;
-          }
-      
-          .loader::before,
-          .loader::after {
+                radial-gradient(closest-side at 50% 12.5%, #009a53 96%, transparent) 50% 0/20% 80% repeat-y,
+                radial-gradient(closest-side at 12.5% 50%, #009a53 96%, transparent) 0 50%/80% 20% repeat-x;
+        }
+
+        .loader::before,
+        .loader::after {
             content: "";
             grid-area: 1 / 1;
             transform: rotate(30deg);
-          }
-      
-          .loader::after {
+        }
+
+        .loader::after {
             transform: rotate(60deg);
-          }
-      
-          @keyframes spin {
+        }
+
+        @keyframes spin {
             100% {
-              transform: rotate(360deg);
+                transform: rotate(360deg);
             }
-          }
+        }
 
         .fc .fc-toolbar button {
             background-color: #009a53;
@@ -77,140 +80,183 @@
         .fc .fc-timeGridDay-button:hover {
             background-color: #039955 !important;
         }
+       
     </style>
 </head>
 
 <body class="overflow-x-hidden">
+
     <div id="loader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
         <div class="loader"></div>
-      </div>
-      <!-- Main Content -->
+    </div>
+    
+
+    <!-- Main Content -->
     <div id="main-content" class="hidden">
-    <div class="flex flex-col justify-center items-center font-noto-sans text-black">
-        <!-- Navbar -->
-        <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
-            <!-- Logo -->
-            <div>
-                <a href="index.html">
-                    <img class="ml-4 h-16" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
-                </a>
-
-            </div>
-
-            <!-- Hamburger Menu -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="block text-gray-800 focus:outline-none">
-                    <img class="h-6 w-6" src="./public/Menu.png" />
-                </button>
-            </div>
-
-            <!-- Navigation -->
-            <nav id="menu" class="hidden md:flex gap-10 items-center relative">
-                <a href="about.html" class="no-underline text-black hover:text-gray-700">About Us</a>
-                <a href="#" class="no-underline text-black hover:text-gray-700">Services</a>
-                <a href="events.html" class="no-underline text-black hover:text-gray-700">Events</a>
-                <div class="relative group">
-                  <a href="#" class="no-underline text-black hover:text-gray-700">Donations</a>
-                  <div
-                    class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Online</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Stock</a>
-                  </div>
-                </div>
-              </nav>
-
-            <!-- Janaza and Mosque Location -->
-            <div class="hidden md:flex items-center space-x-4 w-36 relative">
-                <div class="dropdown relative">
-                  <button
-                    class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300">
-                    Location
-                  </button>
-                  <div class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2 z-30">
-                    <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Janaza</a>
-                    <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Mosque</a>
-                  </div>
-                </div>
-              </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4">
-            <a href="about.html" class="no-underline text-black hover:text-gray-700 py-2">About Us</a>
-            <a href="#" class="no-underline text-black hover:text-gray-700 py-2">Services</a>
-            <a href="#" class="no-underline text-black hover:text-gray-700 py-2">Events</a>
-            <div class="relative">
-                <button id="donations-button"
-                  class="no-underline text-black hover:text-gray-700 py-2 block w-full text-left">Donations</button>
-                <div id="donations-dropdown"
-                  class="hidden flex-col items-start bg-white border border-gray-200 rounded-md shadow-lg w-full mt-1 z-30">
-                  <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Online</a>
-                  <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Stock</a>
-                </div>
-              </div>
-            <div class="flex items-center justify-center w-36 relative mt-2">
-                <div class="">
-                    <button
-                        class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300">
-                        Location
-                    </button>
-                </div>
+        <!-- Admin Login Form -->
+        <div id="admin-login" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+                <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
+                <form id="admin-login-form">
+                    <div class="mb-4">
+                        <label for="admin-username" class="block text-gray-700">Username</label>
+                        <input type="text" id="admin-username" name="username" class="border border-gray-300 p-2 w-full" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="admin-password" class="block text-gray-700">Password</label>
+                        <input type="password" id="admin-password" name="password" class="border border-gray-300 p-2 w-full" required>
+                    </div>
+                    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded w-full">Login</button>
+                </form>
+                <button id="close-login" class="mt-4 text-gray-600 hover:underline">Close</button>
             </div>
         </div>
-    </div>
-    <div class="mt-12 mb-28 relative max-w-full h-60 flex justify-center bg-cover-img bg-[url('./public/background.png')]">
-          <div class="absolute inset-0 bg-white opacity-70 z-10"></div>
-    <div class="flex justify-center items-center max-w-full my-12 font-serif">
-        <button class="bg-white rounded-full border-4 border-green-600 px-8 py-2 text-mediumseagreen-300  font-bold text-3xl mb-6 font-sans z-20">Events Calendar</button>
-    </div>
-    </div>
-    <div id='calendar' class="my-16 mx-28 " data-aos="fade-down" data-aos-duration="1500" data-aos-delay="500"></div>
-    <!--footer-->
-    <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
-        <div class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200">
-            <div class="flex flex-col items-start">
-                <img class="h-24 my-4" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
+        <div class="flex flex-col justify-center items-center font-noto-sans text-black">
+            <!-- Navbar -->
+            <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
+                <!-- Logo -->
+                <div>
+                    <a href="index.html">
+                        <img class="ml-4 h-16" loading="lazy" alt="Logo"
+                            src="./public/bilallogohighresolution-1@2x.png" />
+                    </a>
 
-                <div class="my-4 flex flex-col gap-2">
-                    <!-- <p class="font-semibold">Contact Us</p> -->
-                    <p>Bilal Masjid 4115 SW 160th Beaverton OR 97007</p>
-                    <p>Email: bilalmasjid@bilalmasjid.com</p>
+                </div>
+
+                <!-- Hamburger Menu -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="block text-gray-800 focus:outline-none">
+                        <img class="h-6 w-6" src="./public/Menu.png" />
+                    </button>
+                </div>
+
+                <!-- Navigation -->
+                <nav id="menu" class="hidden md:flex gap-10 items-center relative">
+                    <a href="about.html" class="no-underline text-black hover:text-gray-700">About Us</a>
+                    <a href="#" class="no-underline text-black hover:text-gray-700">Services</a>
+                    <a href="events.html" class="no-underline text-black hover:text-gray-700">Events</a>
+                    <div class="relative group">
+                        <a href="#" class="no-underline text-black hover:text-gray-700">Donations</a>
+                        <div
+                            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Online</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Stock</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Janaza and Mosque Location -->
+                <div class="hidden md:flex items-center space-x-4 w-36 relative">
+                    <div class="dropdown relative">
+                        <button
+                            class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300">
+                            Location
+                        </button>
+                        <div
+                            class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2 z-30">
+                            <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Janaza</a>
+                            <a href="#" class="no-underline block px-4 py-2 text-black hover:bg-gray-100">Mosque</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="flex flex-row gap-12 items-start">
-                <div class="flex flex-col gap-4 font-medium">
-                    <p class="font-semibold">Quick Links</p>
-                    <p>About Us</p>
-                    <p>Services</p>
-                    <p>Community</p>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4">
+                <a href="about.html" class="no-underline text-black hover:text-gray-700 py-2">About Us</a>
+                <a href="#" class="no-underline text-black hover:text-gray-700 py-2">Services</a>
+                <a href="#" class="no-underline text-black hover:text-gray-700 py-2">Events</a>
+                <div class="relative">
+                    <button id="donations-button"
+                        class="no-underline text-black hover:text-gray-700 py-2 block w-full text-left">Donations</button>
+                    <div id="donations-dropdown"
+                        class="hidden flex-col items-start bg-white border border-gray-200 rounded-md shadow-lg w-full mt-1 z-30">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Online</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Stock</a>
+                    </div>
                 </div>
-                <div class="flex flex-col justify-center mx-4 items-center">
-                    <button
-                        class="flex justify-center items-center min-w-28 my-4 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl">
-                        Follow Us
-                    </button>
-                    <div class="flex gap-3">
-                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
-                            <a href="https://web.facebook.com/bilalmasjidbeaverton?_rdc=1&_rdr" target="_blank">
-                                <img src="./public/Facebook-icon.png" alt="facebook icon">
-                            </a>
-                        </div>
-                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
-                            <a href="https://chat.whatsapp.com/B8c6ngDZTkBI8RBs6JHEgm" target="_blank">
-                                <img src="./public/whatsapp-icon.svg">
-                            </a>
-                        </div>
-                        <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
-                            <a href="https://www.youtube.com/channel/UCYcsOfNe70UH_b65RdZmpRA " target="_blank">
-                                <img src="./public/youtube-icon.png" class="p-1">
-                            </a>
+                <div class="flex items-center justify-center w-36 relative mt-2">
+                    <div class="">
+                        <button
+                            class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300">
+                            Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- calendar -->
+        <div
+            class="mt-12 mb-16 relative max-w-full h-60 flex justify-center bg-cover-img bg-[url('./public/background.png')]">
+            <div class="absolute inset-0 bg-white opacity-70 z-10"></div>
+            <div class="flex justify-center items-center max-w-full my-12 font-serif">
+                <button
+                    class="bg-white rounded-full border-4 border-green-600 px-8 py-2 text-mediumseagreen-300  font-bold text-3xl mb-6 font-sans z-20">Events
+                    Calendar</button>
+            </div>
+        </div>
+        <div id="event-controls" class="hidden flex justify-center items-center mb-16">
+            <input type="text" id="event-title" placeholder="Event Title" class="border px-2 py-1 mx-2" />
+            <input type="date" id="event-date" class="border px-2 py-1 mx-2" />
+            <button id="add-event-btn" class="bg-green-600 text-white px-4 py-2 rounded mx-2">Add Event</button>
+        </div>
+
+        <div id="calendar-and-list" class="flex mx-16">
+            <div id="calendar" class="w-2/3"></div>
+            <div id="event-list" class="w-1/3 bg-gray-100 p-4 ml-4">
+                <h2 class="text-xl font-semibold mb-2">Event List</h2>
+                <ul id="event-items" class="list-disc pl-5"></ul>
+            </div>
+        </div>
+        <div id='calendar' class="my-16 mx-28 " data-aos="fade-down" data-aos-duration="1500" data-aos-delay="500">
+        </div>
+        <!-- calendar end -->
+        <!--footer-->
+        <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
+            <div class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200">
+                <div class="flex flex-col items-start">
+                    <img class="h-24 my-4" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
+
+                    <div class="my-4 flex flex-col gap-2">
+                        <!-- <p class="font-semibold">Contact Us</p> -->
+                        <p>Address: 4115 SW 160th Beaverton, OR 97008</p>
+                        <p>Email: bilalmasjid@bilalmasjid.com</p>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-12 items-start">
+                    <div class="flex flex-col gap-4 font-medium">
+                        <p class="font-semibold">Quick Links</p>
+                        <p>About Us</p>
+                        <p>Services</p>
+                        <p>Community</p>
+                    </div>
+                    <div class="flex flex-col justify-center mx-4 items-center">
+                        <button
+                            class="flex justify-center items-center min-w-28 my-4 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl">
+                            Follow Us
+                        </button>
+                        <div class="flex gap-3">
+                            <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                                <a href="https://web.facebook.com/bilalmasjidbeaverton?_rdc=1&_rdr" target="_blank">
+                                    <img src="./public/Facebook-icon.png" alt="facebook icon">
+                                </a>
+                            </div>
+                            <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                                <a href="https://chat.whatsapp.com/B8c6ngDZTkBI8RBs6JHEgm" target="_blank">
+                                    <img src="./public/whatsapp-icon.svg">
+                                </a>
+                            </div>
+                            <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                                <a href="https://www.youtube.com/channel/UCYcsOfNe70UH_b65RdZmpRA " target="_blank">
+                                    <img src="./public/youtube-icon.png" class="p-1">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -225,175 +271,228 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const adminLogin = document.getElementById("admin-login");
+    const adminLoginForm = document.getElementById("admin-login-form");
+    const closeLogin = document.getElementById("close-login");
+    const eventControls = document.getElementById("event-controls");
+
+    const ADMIN_USERNAME = "admin"; // Set your admin username
+    const ADMIN_PASSWORD = "password123"; // Set your admin password
+
+    let isAdminLoggedIn = false; 
+
+    function showAdminLogin() {
+        if (!isAdminLoggedIn) {
+            adminLogin.classList.remove("hidden");
+        }
+    }
+
+    function hideAdminLogin() {
+        adminLogin.classList.add("hidden");
+    }
+
+    adminLoginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("admin-username").value;
+        const password = document.getElementById("admin-password").value;
+
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+            isAdminLoggedIn = true;
+            hideAdminLogin();
+            eventControls.classList.remove("hidden"); // Show event controls
+        } else {
+            alert("Invalid credentials!");
+        }
+    });
+
+    closeLogin.addEventListener("click", function () {
+        hideAdminLogin();
+    });
+
+    // Show login form if not logged in
+    showAdminLogin();
+});
+
+    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         window.addEventListener('load', function () {
             var loader = document.getElementById('loader');
             var mainContent = document.getElementById('main-content');
-            
-            setTimeout(function () {
-              loader.style.display = 'none';
-              mainContent.classList.remove('hidden');
-        
-              AOS.init({
+
+            // Initialize AOS as soon as the page has fully loaded
+            AOS.init({
                 duration: 3000,
                 once: true,
                 offset: 90,
-              });
-          
-              var calendarEl = document.getElementById('calendar');
-              var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                initialDate: '2024-07-07',
-                headerToolbar: {
-                  left: 'prev,next today',
-                  center: 'title',
-                  right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                events: [
-                {
-                        
-                    title: 'Ladies support group halaqa',
-                    start: '2024-07-29',
-                    end: '2024-07-29',
-                    color: '#009a53',
-                    
-                },
-                {
+            });
 
-                    title: 'Sisters Tajweed Halaqah(English)',
-                    start: '2024-08-03',
-                    end: '2024-08-03',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Illustrated Tajweed (English)',
-                    start: '2024-08-03',
-                    end: '2024-08-03',
-                    color: '#009a53'
-                },
-                {
-                    
-                    title: 'Ladies support group halaqa',
-                    start: '2024-08-05',
-                    end: '2024-08-05',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Ladies Quran Halaqa (Arabic speakers)',
-                    start: '2024-08-09',
-                    end: '2024-08-09',
-                    color: '#009a53'
-                },
-                {
-                    title: 'Sisters Tajweed Halaqah(English)',
-                    start: '2024-08-10',
-                    end: '2024-08-10',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Illustrated Tajweed (English)',
-                    start: '2024-08-10',
-                    end: '2024-08-10',
-                    color: '#009a53'
-                },
-                {
-                    title: 'Community Pot Lucks',
-                    start: '2024-08-10',
-                    end: '2024-08-10',
-                    color: '#009a53'
-                },
-                {
-                    
-                    title: 'Ladies support group halaqa',
-                    start: '2024-08-12',
-                    end: '2024-08-12T',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Sisters Tajweed Halaqah(English)',
-                    start: '2024-08-17',
-                    end: '2024-08-17',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Illustrated Tajweed (English)',
-                    start: '2024-08-17',
-                    end: '2024-08-17',
-                    color: '#009a53'
-                },
-                {
-                    groupid: '999',
-                    title: 'Ladies support group halaqa',
-                    start: '2024-08-19',
-                    end: '2024-08-19',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Ladies Quran Halaqa (Arabic speakers)',
-                    start: '2024-08-23',
-                    end: '2024-08-23',
-                    color: '#009a53'
-                },
-                {
-                    title: 'Sisters Tajweed Halaqah(English)',
-                    start: '2024-08-24',
-                    end: '2024-08-24',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Illustrated Tajweed (English)',
-                    start: '2024-08-24',
-                    end: '2024-08-24',
-                    color: '#009a53'
-                },
-                {
-                    title: 'Community Pot Lucks',
-                    start: '2024-08-24',
-                    end: '2024-08-24',
-                    color: '#009a53'
-                },
-                {
-                    
-                    title: 'Ladies support group halaqa',
-                    start: '2024-08-26',
-                    end: '2024-08-26',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Imam Toures Quran Tafseer class',
-                    start: '2024-08-30',
-                    end: '2024-08-30',
-                    color: '#009a53'
-                },
-                {
-                    title: 'Sisters Tajweed Halaqah(English)',
-                    start: '2024-08-31',
-                    end: '2024-08-31T',
-                    color: '#009a53',
-                    fontSize: '12px'
-                },
-                {
-                    title: 'Illustrated Tajweed (English)',
-                    start: '2024-08-31',
-                    end: '2024-08-31',
-                    color: '#009a53'
-                },
 
-                ]
-              });
-              calendar.render();
-            }, 3000); // 3 seconds delay
-          });
-          
+
+            setTimeout(function () {
+                loader.style.display = 'none';
+
+                
+
+                mainContent.classList.remove('hidden');
+
+
+                var calendarEl = document.getElementById('calendar');
+
+                // Initialize FullCalendar with some default events
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    initialDate: '2024-08-01',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    events: [
+                        {
+
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-12',
+                            end: '2024-08-12T',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-17',
+                            end: '2024-08-17',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-17',
+                            end: '2024-08-17',
+                            color: '#009a53'
+                        },
+                        {
+                            groupid: '999',
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-19',
+                            end: '2024-08-19',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Ladies Quran Halaqa (Arabic speakers)',
+                            start: '2024-08-23',
+                            end: '2024-08-23',
+                            color: '#009a53'
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-24',
+                            end: '2024-08-24',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-24',
+                            end: '2024-08-24',
+                            color: '#009a53'
+                        },
+                        {
+                            title: 'Community Pot Lucks',
+                            start: '2024-08-24',
+                            end: '2024-08-24',
+                            color: '#009a53'
+                        },
+                        {
+
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-26',
+                            end: '2024-08-26',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Imam Toures Quran Tafseer class',
+                            start: '2024-08-30',
+                            end: '2024-08-30',
+                            color: '#009a53'
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-31',
+                            end: '2024-08-31T',
+                            color: '#009a53',
+                            fontSize: '12px'
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-31',
+                            end: '2024-08-31',
+                            color: '#009a53'
+                        },
+
+                    ],
+                });
+
+                calendar.render();
+
+                // Function to update the event list 
+
+                function updateEventList() {
+                    var events = calendar.getEvents();
+                    var eventList = document.getElementById('event-items');
+                    eventList.innerHTML = '';
+
+                    events.forEach(function (event) {
+                        var li = document.createElement('li');
+                        li.className = 'flex items-center mb-2';
+
+
+                        var textSpan = document.createElement('span');
+                        textSpan.className = 'flex-grow';
+                        textSpan.textContent = `${event.title} - ${event.start.toLocaleDateString()}`;
+
+                        // Create remove button
+                        var removeBtn = document.createElement('button');
+                        removeBtn.className = 'ml-2 bg-green-600 text-white px-2 py-1 rounded flex items-center';
+                        removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                        removeBtn.addEventListener('click', function () {
+                            event.remove();
+                            updateEventList();
+                            AOS.refresh();
+                        });
+
+                        li.appendChild(textSpan);
+                        li.appendChild(removeBtn);
+                        eventList.appendChild(li);
+                    });
+
+                    AOS.refresh();
+                }
+
+
+                // Function to add event
+                function addEvent() {
+                    var title = document.getElementById('event-title').value;
+                    var date = document.getElementById('event-date').value;
+                    if (title && date) {
+                        calendar.addEvent({
+                            title: title,
+                            start: date,
+                            color: '#009a53'
+                        });
+                        updateEventList();
+                    }
+                }
+                document.getElementById('add-event-btn').addEventListener('click', addEvent);
+                updateEventList();
+                AOS.refresh();
+
+            }, 3000);
+        });
     </script>
 </body>
 
