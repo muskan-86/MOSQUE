@@ -80,7 +80,53 @@
         .fc .fc-timeGridDay-button:hover {
             background-color: #039955 !important;
         }
-       
+
+        /* Ensure the navbar items stack vertically on small screens */
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar-content .menu {
+                display: none;
+            }
+
+            .navbar-content .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+            }
+        }
+
+        /* Responsive Admin Login Form */
+        @media (max-width: 768px) {
+            #admin-login {
+                width: 90%;
+                padding: 16px;
+            }
+        }
+
+        /* Responsive Calendar and Event List */
+        @media (max-width: 768px) {
+            #calendar-and-list {
+                flex-direction: column;
+                gap: 20px;
+                /* Add gap between calendar and event list */
+            }
+
+            #calendar,
+            #event-list {
+                width: 100%;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 
@@ -89,29 +135,32 @@
     <div id="loader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
         <div class="loader"></div>
     </div>
-    
-
     <!-- Main Content -->
     <div id="main-content" class="hidden">
+
         <!-- Admin Login Form -->
-        <div id="admin-login" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <div id="admin-login"
+            class="hidden overflow-x-hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
                 <form id="admin-login-form">
                     <div class="mb-4">
                         <label for="admin-username" class="block text-gray-700">Username</label>
-                        <input type="text" id="admin-username" name="username" class="border border-gray-300 p-2 w-full" required>
+                        <input type="text" id="admin-username" name="username" class="border border-gray-300 p-2 w-full"
+                            required>
                     </div>
                     <div class="mb-6">
                         <label for="admin-password" class="block text-gray-700">Password</label>
-                        <input type="password" id="admin-password" name="password" class="border border-gray-300 p-2 w-full" required>
+                        <input type="password" id="admin-password" name="password"
+                            class="border border-gray-300 p-2 w-full" required>
                     </div>
                     <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded w-full">Login</button>
                 </form>
                 <button id="close-login" class="mt-4 text-gray-600 hover:underline">Close</button>
             </div>
         </div>
-        <div class="flex flex-col justify-center items-center font-noto-sans text-black">
+
+        <div class=" flex-col justify-center items-center font-noto-sans text-black">
             <!-- Navbar -->
             <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
                 <!-- Logo -->
@@ -190,26 +239,32 @@
         <div
             class="mt-12 mb-16 relative max-w-full h-60 flex justify-center bg-cover-img bg-[url('./public/background.png')]">
             <div class="absolute inset-0 bg-white opacity-70 z-10"></div>
-            <div class="flex justify-center items-center max-w-full my-12 font-serif">
+            <div class="flex flex-col justify-center items-center max-w-full py-12 font-serif relative z-20">
                 <button
-                    class="bg-white rounded-full border-4 border-green-600 px-8 py-2 text-mediumseagreen-300  font-bold text-3xl mb-6 font-sans z-20">Events
-                    Calendar</button>
+                    class="bg-white rounded-full border-4 border-green-600 px-8 py-2 text-mediumseagreen-300 font-bold text-3xl mb-6 font-sans z-20">
+                    Events Calendar
+                </button>
             </div>
         </div>
-        <div id="event-controls" class="hidden flex justify-center items-center mb-16">
-            <input type="text" id="event-title" placeholder="Event Title" class="border px-2 py-1 mx-2" />
-            <input type="date" id="event-date" class="border px-2 py-1 mx-2" />
+
+        <div class="flex justify-center items-center mb-16">
             <button id="add-event-btn" class="bg-green-600 text-white px-4 py-2 rounded mx-2">Add Event</button>
         </div>
+        <div id="event-controls" class="hidden flex sm:flex-row justify-center items-center mb-16 p-4 gap-4 sm:gap-6">
+            <input type="text" id="event-title" placeholder="Event Title"
+                class="border px-3 py-2 rounded w-full sm:w-auto" />
+            <input type="date" id="event-date" class="border px-3 py-2 rounded w-full sm:w-auto" />
+            <button id="addeventbtn" class="bg-green-600 text-white px-4 py-2 rounded w-full sm:w-auto">Add
+                Event</button>
+        </div>
 
-        <div id="calendar-and-list" class="flex mx-16">
-            <div id="calendar" class="w-2/3"></div>
-            <div id="event-list" class="w-1/3 bg-gray-100 p-4 ml-4">
+
+        <div id="calendar-and-list" class="flex mx-16 flex-col md:flex-row gap-4 md:gap-8">
+            <div id="calendar" class="w-full overflow-x-hidden lg:w-2/3"></div>
+            <div id="event-list" class="w-full md:w-1/3 bg-gray-100 p-4 mt-4 md:mt-0 md:ml-4">
                 <h2 class="text-xl font-semibold mb-2">Event List</h2>
                 <ul id="event-items" class="list-disc pl-5"></ul>
             </div>
-        </div>
-        <div id='calendar' class="my-16 mx-28 " data-aos="fade-down" data-aos-duration="1500" data-aos-delay="500">
         </div>
         <!-- calendar end -->
         <!--footer-->
@@ -271,54 +326,63 @@
             });
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const adminLogin = document.getElementById("admin-login");
-    const adminLoginForm = document.getElementById("admin-login-form");
-    const closeLogin = document.getElementById("close-login");
-    const eventControls = document.getElementById("event-controls");
-
-    const ADMIN_USERNAME = "admin"; // Set your admin username
-    const ADMIN_PASSWORD = "password123"; // Set your admin password
-
-    let isAdminLoggedIn = false; 
-
-    function showAdminLogin() {
-        if (!isAdminLoggedIn) {
-            adminLogin.classList.remove("hidden");
-        }
-    }
-
-    function hideAdminLogin() {
-        adminLogin.classList.add("hidden");
-    }
-
-    adminLoginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const username = document.getElementById("admin-username").value;
-        const password = document.getElementById("admin-password").value;
-
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-            isAdminLoggedIn = true;
-            hideAdminLogin();
-            eventControls.classList.remove("hidden"); // Show event controls
-        } else {
-            alert("Invalid credentials!");
-        }
-    });
-
-    closeLogin.addEventListener("click", function () {
-        hideAdminLogin();
-    });
-
-    // Show login form if not logged in
-    showAdminLogin();
-});
-
-    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        let isAdminLoggedIn = false;
+        document.addEventListener("DOMContentLoaded", function () {
+            const adminLogin = document.getElementById("admin-login");
+            const adminLoginForm = document.getElementById("admin-login-form");
+            const closeLogin = document.getElementById("close-login");
+            const eventControls = document.getElementById("event-controls");
+
+            const ADMIN_USERNAME = "admin"; // Set your admin username
+            const ADMIN_PASSWORD = "password123"; // Set your admin password
+
+
+
+            // Function to show the admin login form
+            function showAdminLogin() {
+                if (!isAdminLoggedIn) {
+                    adminLogin.classList.remove("hidden");
+                }
+            }
+
+            // Function to hide the admin login form
+            function hideAdminLogin() {
+                adminLogin.classList.add("hidden");
+            }
+
+            // Handle admin login form submission
+            adminLoginForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const username = document.getElementById("admin-username").value;
+                const password = document.getElementById("admin-password").value;
+
+                if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                    isAdminLoggedIn = true;
+                    hideAdminLogin();
+                    eventControls.classList.remove("hidden"); // Show event controls
+                    updateEventList(); // Update event list after login
+                    console.log('Is Admin Logged In:', isAdminLoggedIn);
+                } else {
+                    alert("Invalid credentials!");
+                }
+            });
+
+            // Close button event listener
+            closeLogin.addEventListener("click", function () {
+                hideAdminLogin();
+            });
+
+            // Show login form when the "Add Event" button is clicked
+            const addEventButton = document.getElementById("add-event-btn");
+            addEventButton.addEventListener("click", function () {
+                showAdminLogin();
+            });
+
+        });
+
         window.addEventListener('load', function () {
             var loader = document.getElementById('loader');
             var mainContent = document.getElementById('main-content');
@@ -330,15 +394,9 @@
                 offset: 90,
             });
 
-
-
             setTimeout(function () {
                 loader.style.display = 'none';
-
-                
-
                 mainContent.classList.remove('hidden');
-
 
                 var calendarEl = document.getElementById('calendar');
 
@@ -352,127 +410,51 @@
                         right: 'dayGridMonth,timeGridWeek,timeGridDay'
                     },
                     events: [
-                        {
-
-                            title: 'Ladies support group halaqa',
-                            start: '2024-08-12',
-                            end: '2024-08-12T',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Sisters Tajweed Halaqah(English)',
-                            start: '2024-08-17',
-                            end: '2024-08-17',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Illustrated Tajweed (English)',
-                            start: '2024-08-17',
-                            end: '2024-08-17',
-                            color: '#009a53'
-                        },
-                        {
-                            groupid: '999',
-                            title: 'Ladies support group halaqa',
-                            start: '2024-08-19',
-                            end: '2024-08-19',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Ladies Quran Halaqa (Arabic speakers)',
-                            start: '2024-08-23',
-                            end: '2024-08-23',
-                            color: '#009a53'
-                        },
-                        {
-                            title: 'Sisters Tajweed Halaqah(English)',
-                            start: '2024-08-24',
-                            end: '2024-08-24',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Illustrated Tajweed (English)',
-                            start: '2024-08-24',
-                            end: '2024-08-24',
-                            color: '#009a53'
-                        },
-                        {
-                            title: 'Community Pot Lucks',
-                            start: '2024-08-24',
-                            end: '2024-08-24',
-                            color: '#009a53'
-                        },
-                        {
-
-                            title: 'Ladies support group halaqa',
-                            start: '2024-08-26',
-                            end: '2024-08-26',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Imam Toures Quran Tafseer class',
-                            start: '2024-08-30',
-                            end: '2024-08-30',
-                            color: '#009a53'
-                        },
-                        {
-                            title: 'Sisters Tajweed Halaqah(English)',
-                            start: '2024-08-31',
-                            end: '2024-08-31T',
-                            color: '#009a53',
-                            fontSize: '12px'
-                        },
-                        {
-                            title: 'Illustrated Tajweed (English)',
-                            start: '2024-08-31',
-                            end: '2024-08-31',
-                            color: '#009a53'
-                        },
-
+                        { title: 'Ladies support group halaqa', start: '2024-08-12', color: '#009a53' },
+                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-17', color: '#009a53' },
+                        { title: 'Illustrated Tajweed (English)', start: '2024-08-17', color: '#009a53' },
+                        { title: 'Ladies support group halaqa', start: '2024-08-19', color: '#009a53' },
+                        { title: 'Ladies Quran Halaqa (Arabic speakers)', start: '2024-08-23', color: '#009a53' },
+                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-24', color: '#009a53' },
+                        { title: 'Illustrated Tajweed (English)', start: '2024-08-24', color: '#009a53' },
+                        { title: 'Community Pot Lucks', start: '2024-08-24', color: '#009a53' },
+                        { title: 'Ladies support group halaqa', start: '2024-08-26', color: '#009a53' },
+                        { title: 'Imam Toures Quran Tafseer class', start: '2024-08-30', color: '#009a53' },
+                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-31', color: '#009a53' },
+                        { title: 'Illustrated Tajweed (English)', start: '2024-08-31', color: '#009a53' },
                     ],
                 });
 
                 calendar.render();
 
-                // Function to update the event list 
-
+                // Function to update the event list
                 function updateEventList() {
+
                     var events = calendar.getEvents();
                     var eventList = document.getElementById('event-items');
+
                     eventList.innerHTML = '';
 
                     events.forEach(function (event) {
                         var li = document.createElement('li');
                         li.className = 'flex items-center mb-2';
-
-
                         var textSpan = document.createElement('span');
                         textSpan.className = 'flex-grow';
                         textSpan.textContent = `${event.title} - ${event.start.toLocaleDateString()}`;
-
-                        // Create remove button
-                        var removeBtn = document.createElement('button');
-                        removeBtn.className = 'ml-2 bg-green-600 text-white px-2 py-1 rounded flex items-center';
-                        removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
-                        removeBtn.addEventListener('click', function () {
-                            event.remove();
-                            updateEventList();
-                            AOS.refresh();
-                        });
-
                         li.appendChild(textSpan);
-                        li.appendChild(removeBtn);
+                        if (isAdminLoggedIn) {
+                            var deleteBtn = document.createElement('button');
+                            deleteBtn.className = 'ml-2 bg-green-600 text-white px-2 py-1 rounded flex items-center delete-btn';
+                            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                            deleteBtn.addEventListener('click', function () {
+                                event.remove();
+                                updateEventList();
+                            });
+                            li.appendChild(deleteBtn);
+                        }
                         eventList.appendChild(li);
                     });
-
-                    AOS.refresh();
                 }
-
 
                 // Function to add event
                 function addEvent() {
@@ -487,7 +469,8 @@
                         updateEventList();
                     }
                 }
-                document.getElementById('add-event-btn').addEventListener('click', addEvent);
+
+                document.getElementById('addeventbtn').addEventListener('click', addEvent);
                 updateEventList();
                 AOS.refresh();
 
