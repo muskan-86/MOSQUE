@@ -83,22 +83,24 @@
 
         @media (max-width: 500px) {
             .fc .fc-toolbar button {
-            width: 10vw;
-           
+                width: 10vw;
+
+            }
+
+            .fc .fc-dayGridMonth-button,
+            .fc .fc-today-button {
+                width: 5vw;
+
+            }
+
+            .fc .fc-dayGridMonth-button,
+            .fc .fc-today-button,
+            .fc .fc-timeGridWeek-button,
+            .fc .fc-timeGridDay-button {
+                display: none;
+
+            }
         }
-        .fc .fc-dayGridMonth-button,
-        .fc .fc-today-button {
-            width: 5vw;
-           
-        }
-        .fc .fc-dayGridMonth-button,
-        .fc .fc-today-button,
-        .fc .fc-timeGridWeek-button,
-        .fc .fc-timeGridDay-button {
-           display:none ;
-            
-        }
-    }
 
         /* Ensure the navbar items stack vertically on small screens */
 
@@ -128,7 +130,7 @@
         /* Responsive Admin Login Form */
         @media (max-width: 768px) {
             #admin-login {
-                width: 90%;
+                width: 100%;
                 padding: 16px;
             }
         }
@@ -140,16 +142,18 @@
                 justify-content: center;
                 gap: 16px;
             }
-            #calendar{
+
+            #calendar {
                 max-height: 100vh;
-                width:80%;
-                margin:0 auto;
+                width: 80%;
+                margin: 0 auto;
                 overflow-y: hidden;
             }
+
             #event-list {
                 width: 80%;
-                margin:0 auto;
-            
+                margin: 0 auto;
+
             }
         }
     </style>
@@ -278,13 +282,12 @@
         <div id="event-controls" class="hidden flex sm:flex-row justify-center items-center mb-16 p-4 gap-4 sm:gap-6">
             <input type="text" id="event-title" placeholder="Event Title"
                 class="border px-3 py-2 rounded w-full sm:w-auto" />
-            <input type="date" id="event-date" class="border px-3 py-2 rounded w-full sm:w-auto" />
             <button id="addeventbtn" class="bg-green-600 text-white px-4 py-2 rounded w-full sm:w-auto">Add
                 Event</button>
         </div>
 
 
-        <div id="calendar-and-list" class="flex justify-center flex-col md:flex-row gap-4 md:gap-8"> 
+        <div id="calendar-and-list" class="flex justify-center flex-col md:flex-row gap-4 md:gap-8">
             <div id="calendar" class="w-full h-screen md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto overflow-y-auto "></div>
             <div id="event-list" class="w-full md:w-1/3 bg-gray-100 p-4 m-12 md:mt-0 md:ml-4">
                 <h2 class="text-xl font-semibold mb-2">Event List</h2>
@@ -435,26 +438,92 @@
                         right: 'dayGridMonth,timeGridWeek,timeGridDay'
                     },
                     events: [
-                        { title: 'Ladies support group halaqa', start: '2024-08-12', color: '#009a53' },
-                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-17', color: '#009a53' },
-                        { title: 'Illustrated Tajweed (English)', start: '2024-08-17', color: '#009a53' },
-                        { title: 'Ladies support group halaqa', start: '2024-08-19', color: '#009a53' },
-                        { title: 'Ladies Quran Halaqa (Arabic speakers)', start: '2024-08-23', color: '#009a53' },
-                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-24', color: '#009a53' },
-                        { title: 'Illustrated Tajweed (English)', start: '2024-08-24', color: '#009a53' },
-                        { title: 'Community Pot Lucks', start: '2024-08-24', color: '#009a53' },
-                        { title: 'Ladies support group halaqa', start: '2024-08-26', color: '#009a53' },
-                        { title: 'Imam Toures Quran Tafseer class', start: '2024-08-30', color: '#009a53' },
-                        { title: 'Sisters Tajweed Halaqah(English)', start: '2024-08-31', color: '#009a53' },
-                        { title: 'Illustrated Tajweed (English)', start: '2024-08-31', color: '#009a53' },
+                        {
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-12',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/12&ID=1167&Source='
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-17',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/17&ID=1170&Source='
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-17',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/17&ID=1172&Source='
+
+                        },
+                        {
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-19',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/19&ID=1167&Source='
+                        },
+                        {
+                            title: 'Ladies Quran Halaqa (Arabic speakers)',
+                            start: '2024-08-23',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/23&ID=1253&Source='
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-24',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/24&ID=1170&Source='
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-24',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/24&ID=1172&Source='
+                        },
+                        {
+                            title: 'Community Pot Lucks',
+                            start: '2024-08-24',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/24&ID=1199&Source='
+                        },
+                        {
+                            title: 'Ladies support group halaqa',
+                            start: '2024-08-26',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/26&ID=1167&Source='
+                        },
+                        {
+                            title: 'Imam Toures Quran Tafseer class',
+                            start: '2024-08-30',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/30&ID=1150&Source='
+                        },
+                        {
+                            title: 'Sisters Tajweed Halaqah(English)',
+                            start: '2024-08-31',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/31&ID=1170&Source='
+                        },
+                        {
+                            title: 'Illustrated Tajweed (English)',
+                            start: '2024-08-31',
+                            color: '#009a53',
+                            url: 'https://www.bilalmasjid.com/Calcium/Calcium40.pl?Op=PopupWindow&Amount=Month&NavType=Absolute&Type=Block&CalendarName=BilalEvents&Date=2024/8/31&ID=1172&Source='
+                        }
                     ],
+                    eventClick: function (info) {
+                        if (info.event.url) {
+                            window.open(info.event.url, '_blank');
+                            info.jsEvent.preventDefault(); 
+                        }
+                    }
                 });
 
                 calendar.render();
 
                 // Function to update the event list
                 function updateEventList() {
-
                     var events = calendar.getEvents();
                     var eventList = document.getElementById('event-items');
 
@@ -463,10 +532,15 @@
                     events.forEach(function (event) {
                         var li = document.createElement('li');
                         li.className = 'flex items-center mb-2';
-                        var textSpan = document.createElement('span');
-                        textSpan.className = 'flex-grow';
-                        textSpan.textContent = `${event.title} - ${event.start.toLocaleDateString()}`;
-                        li.appendChild(textSpan);
+
+                        var link = document.createElement('a');
+                        link.href = event.url;
+                        link.target = '_blank'; // Open link in a new tab
+                        link.className = 'flex-grow  '; // Adjust styling as needed
+                        link.textContent = `${event.title} - ${event.start.toLocaleDateString()}`;
+
+                        li.appendChild(link);
+
                         if (isAdminLoggedIn) {
                             var deleteBtn = document.createElement('button');
                             deleteBtn.className = 'ml-2 bg-green-600 text-white px-2 py-1 rounded flex items-center delete-btn';
@@ -494,13 +568,13 @@
                         updateEventList();
                     }
                 }
-
                 document.getElementById('addeventbtn').addEventListener('click', addEvent);
                 updateEventList();
                 AOS.refresh();
-
             }, 3000);
         });
+
+
     </script>
 </body>
 
