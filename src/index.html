@@ -202,6 +202,12 @@
         width: 100%;
       }
     }
+    @media (max-width: 768px) {
+            #sunday-school {
+                width: 100%;
+                padding: 16px;
+            }
+        }
   </style>
 </head>
 
@@ -212,6 +218,15 @@
   </div>
   <!-- Main Content -->
   <div id="main-content" class="hidden">
+    <!-- popup image -->
+    <div id="sunday-school"
+    class="hidden overflow-x-hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <img src="./public/BilalSundaySchool.jpeg" alt="Sunday School"class="">
+       
+        <button id="close" class="mt-4 text-black hover:underline">Close</button>
+    </div>
+</div>
     <div class="overflow-x-hidden flex flex-col justify-center items-center m-0 font-noto-sans text-black">
       <div class="">
         <!-- Navbar -->
@@ -919,6 +934,31 @@
         });
       }, 3000); // 3 seconds delay
     });
+  </script>
+
+  <script>
+    // Popup functionality
+const popup = document.getElementById('sunday-school');
+const closeButton = document.getElementById('close');
+
+// Function to show the popup
+function showPopup() {
+  popup.classList.remove('hidden');
+}
+
+// Function to hide the popup
+function closePopup() {
+  popup.classList.add('hidden');
+}
+
+// Add event listener to the close button
+closeButton.addEventListener('click', closePopup);
+
+// Example of showing the popup (you can trigger this based on your logic)
+document.addEventListener('DOMContentLoaded', () => {
+  showPopup(); // Show popup when the page loads (for example)
+});
+
   </script>
 
   <script>
